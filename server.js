@@ -115,7 +115,7 @@ app.get('/api/:handle', (req, res) => {
   });
 });
 
-if (process.env.NODE_ENV === "production" || true) {
+if (process.env.NODE_ENV === "production") {
   // Initialize the app.
   var server = app.listen(process.env.PORT || 8540, function () {
     var port = server.address().port;

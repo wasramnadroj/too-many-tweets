@@ -51,7 +51,6 @@ class App extends Component {
 
   setProfile() {
     if (this.state.handle.length > 0) {
-      console.log('set profile called');
       this.setState({loading: true});
       const port = window.location.host === 'localhost' ? ':3000' : '';
       const endpoint = window.location.origin.concat(port).concat(`/api/${this.state.handle}`);
