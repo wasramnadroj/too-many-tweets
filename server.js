@@ -37,8 +37,10 @@ function fetchUserTweets(tweet_fetch, callback) {
 
   function report(tweet_count, max_id) {
     if(tweet_count === 0) {
-      tweet_info.sentiment /= tweet_info.tweets_processed;
-      tweet_info.sentiment = tweet_info.sentiment.toFixed(2);
+      if (tweet_info.tweets_processed > 0) {
+        tweet_info.sentiment /= tweet_info.tweets_processed;
+        tweet_info.sentiment = tweet_info.sentiment.toFixed(2);
+      }
       callback(tweet_info);
     } else {
       tweet_fetch(tweet_info, max_id, report);
@@ -58,7 +60,7 @@ app.get('/api/:handle', (req, res) => {
     return;
   }
 
-  fetchUserTweets((tweet_info, max_id, report) => {
+  fetchUserTweets((tweet_info, max_id, report, initial) => {
     let options = {
       screen_name: req.params.handle,
       count: 200,
@@ -71,7 +73,7 @@ app.get('/api/:handle', (req, res) => {
 
     client.get('statuses/user_timeline', options, (error, tweets, response) => {
       var total_interaction, tweet;
-      if (!error && tweets.length > 1) {
+      if (!error && tweets.length > 0) {
 
         if ( tweet_info.user === undefined ) {
           tweet_info.user = tweets[0].user;
@@ -98,13 +100,15 @@ app.get('/api/:handle', (req, res) => {
           }
         }
 
-        report(tweets.length, max);
+        report(tweets.length, max-1);
+      } else if (error) {
+        res.sendStatus(500);
+        return;
       } else {
-        if (error) {
-          res.sendStatus(500);
-          return;
-        }
-        report(0, 0);
+        client.get('users/show', {screen_name: options.screen_name}, (error, user, response) => {
+          tweet_info.user = user;
+          report(0, 0);
+        });
       }
     });
 

@@ -63,6 +63,9 @@ class App extends Component {
           }
         }) // Transform the data into json
         .then((data) => {
+          if (data.user === undefined || data.user === null) {
+            console.log(data);
+          }
           this.setState({tweet_info: data, loading: false});
         })
         .catch((err) => {
@@ -87,6 +90,8 @@ class App extends Component {
     if (type === 'jpeg') {
       offset = 11;
       file_type = '.jpeg';
+    } else if (url.includes('default_profile_images')) {
+      file_type = '.png';
     }
 
     return url.slice(0,url.length-offset).concat(`200x200${file_type}`);
@@ -247,7 +252,7 @@ class App extends Component {
                 summary_data.map((metric, i) =>
                   <div key={i}>
                     <Col md={4} xs={4}>
-                      {metric.metric}
+                      <strong>{metric.metric}</strong>
                     </Col>
                     <Col md={8} xs={8}>
                       {metric.value}
@@ -261,7 +266,7 @@ class App extends Component {
                       summary_data.map((metric, i) =>
                         <div key={i}>
                           <Col md={4} xs={4}>
-                            {metric.metric}
+                            <strong>{metric.metric}</strong>
                           </Col>
                           <Col md={8} xs={8}>
                             {metric.value}
@@ -275,7 +280,7 @@ class App extends Component {
                       desktop_summary_data.map((metric, i) =>
                         <div key={i}>
                           <Col md={7} xs={7}>
-                            {metric.metric}
+                            <strong>{metric.metric}</strong>
                           </Col>
                           <Col md={5} xs={5}>
                             {metric.value}
@@ -295,9 +300,9 @@ class App extends Component {
               </h4>
               <div className="sentiment">
                 <div className="slider-tick">
-                  <div>Negative</div>
-                  <div>Neutral</div>
-                  <div>Positive</div>
+                  <strong>Negative</strong>
+                  <strong>Neutral</strong>
+                  <strong>Positive</strong>
                 </div>
                 <div className="sentiment-slider">
                   <div className="sentiment-slider-comp" style={this.getSlider()}/>
