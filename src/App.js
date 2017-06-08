@@ -93,7 +93,10 @@ class App extends Component {
   }
 
   componentDidUpdate() {
-    window.twttr.widgets.load();
+    if (this.state.tweet_info) {
+      window.twttr.widgets.createTweet(this.state.tweet_info.popular_tweet_id,
+        document.getElementById("tweet"));
+    }
   }
 
   daysActive(join) {
@@ -210,25 +213,25 @@ class App extends Component {
             <div className="handle-info">
               <Image src={profile_image} />
               <div className="user-info">
-                <p style={{fontSize: "18px"}}>
+                <p className="name-bio">
                   {profile.name}{' '}
                   {
                     profile.verified &&
                     <span className="fa fa-check-circle" />
                   }
                 </p>
-                <p style={{fontSize: "12px"}}>
+                <p className="handle-bio">
                   @{profile.screen_name}
                 </p>
                 <div style={{flex: "1"}} />
                 {
                   profile.location &&
-                  <p>
+                  <p className="handle-bio">
                     <span className="fa fa-map-marker" />
                     {profile.location}
                   </p>
                 }
-                <p>
+                <p className="handle-bio">
                   <span className="fa fa-calendar" />
                   Joined {join_date}
                 </p>
@@ -286,11 +289,7 @@ class App extends Component {
               <h4>
                 Most Popular Tweet
               </h4>
-              <blockquote className="twitter-tweet" data-cards="hidden" data-lang="en">
-                <a href={`https://twitter.com/${this.state.handle}/status/${tweet_info.popular_tweet_id}`}>
-                  {''}
-                </a>
-              </blockquote>
+              <div id="tweet" />
               <h4>
                 Tweet Sentiment
               </h4>

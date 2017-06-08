@@ -205,9 +205,30 @@ body, html {
   100% { transform: rotate(360deg); }
 }
 
+.name-bio {
+  font-size: 18px;
+}
+
+.handle-bio {
+  font-size: 12px;
+}
+
 @media only screen and (min-width: 600px) {
     /* For tablets: */
     .tweet-info {
       margin: 5px auto 5px auto;
+    }
+
+    .handle-info img {
+      width: 200px;
+      height: 200px;
+    }
+
+    .name-bio {
+      font-size: 34px;
+    }
+
+    .handle-bio {
+      font-size: 20px;
     }
 }
