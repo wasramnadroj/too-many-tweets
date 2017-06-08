@@ -1,0 +1,213 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+}
+
+.flex-wrap {
+  display: flex;
+  flex-direction: column;
+  background: #3b5998; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(left top, #3b5998, #00aced); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(bottom right, #3b5998, #00aced); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(bottom right, #3b5998, #00aced); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(to bottom right, #3b5998, #00aced); /* Standard syntax */
+  margin: auto;
+  min-height: 100%;
+}
+
+.handle-search {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin: auto;
+  color: white;
+  font-size: 16px;
+  width: 200px;
+  flex: 1;
+}
+
+.handle-search .fa {
+  color: #00aced;
+  float: left;
+  margin: 0 5px;
+}
+
+.handle-search p {
+  margin: 0;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.footer {
+  height: 50px;
+  width: 100%;
+  background: #d9b310;
+  color: #1d2731;
+  padding-left: 5%;
+  padding-right: 5%;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.footer p {
+  margin: 0;
+}
+
+.footer .fa:hover {
+  cursor: pointer;
+}
+
+.info-wrap {
+  display: flex;
+  margin: auto;
+  flex-direction: column;
+  background-color: #ebebeb;
+  border-radius: 20px;
+  width: 80%;
+  -webkit-box-shadow: 4px 3px 0px 0px rgba(0,0,0,0.15);
+  -moz-box-shadow: 4px 3px 0px 0px rgba(0,0,0,0.15);
+  box-shadow: 4px 3px 0px 0px rgba(0,0,0,0.15);
+  max-width: 500px;
+}
+
+.handle-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.handle-info img {
+  border-radius: 10px;
+  border: 5px solid white;
+  width: 100px;
+  height: 100px;
+  margin: 5px;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  margin: 5px;
+}
+
+.info-wrap p {
+  margin: 0;
+}
+
+.info-wrap h4 {
+  margin-top: 5px;
+  margin-bottom: 2px;
+  color: #00aced;
+}
+
+.divider {
+  align-self: center;
+  width: 95%;
+  border-bottom: 1px solid #00aced;
+}
+
+.tweet-info {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  width: 90%;
+}
+
+.handle-info .fa {
+  color: #00aced;
+  margin: 0px 5px 0px 0px;
+}
+
+.twitter-tweet {
+  margin: 5px 0 5px 0 !important;
+}
+
+.desktop-summary {
+  display: flex;
+  flex-direction: row;
+}
+
+.sentiment {
+  flex-direction: column;
+  flex: 1;
+  width: 100%;
+  padding-bottom: 5px;
+}
+
+.slider-tick {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.sentiment-slider {
+  width: 100%;
+  height: 20px;
+  border-radius: 20px;
+  align-self: center;
+  box-shadow: 1px 1px 5px #555 inset;
+}
+
+.sentiment-slider-comp {
+  height: 20px;
+  box-shadow: 1px 1px 5px #555 inset;
+}
+
+.profile-header {
+  width: 100%;
+  height: 35px;
+  padding-left: 5px;
+  background-color: #ebebeb;
+  color: #00aced;
+  display: flex;
+  align-items: center;
+}
+
+.profile-back {
+  cursor: pointer;
+}
+
+.profile-header .fa {
+  margin: 0 5px;
+}
+
+#root, #root > [react-dataroot] {
+  min-height: 100%;
+  height: 100%;
+}
+
+.loader {
+  border: 16px solid #f3f3f3; /* Light grey */
+  border-top: 16px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+}
+
+.loader-screen {
+  align-self: center;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@media only screen and (min-width: 600px) {
+    /* For tablets: */
+    .tweet-info {
+      margin: 5px auto 5px auto;
+    }
+}
