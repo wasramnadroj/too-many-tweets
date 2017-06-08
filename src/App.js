@@ -66,7 +66,7 @@ class App extends Component {
           this.setState({tweet_info: data, loading: false});
         })
         .catch((err) => {
-          this.setState({error: err});
+          this.setState({error: err, loading: false});
         });
     }
   }
