@@ -63,7 +63,7 @@ app.get('/api/:handle', (req, res) => {
   fetchUserTweets((tweet_info, max_id, report, initial) => {
     let options = {
       screen_name: req.params.handle,
-      count: 200,
+      count: 2000,
       include_rts: false
     };
 
@@ -102,6 +102,7 @@ app.get('/api/:handle', (req, res) => {
 
         report(tweets.length, max-1);
       } else if (error) {
+        console.log(error);
         res.sendStatus(500);
         return;
       } else {
