@@ -5,7 +5,6 @@
   "private": true,
   "dependencies": {
     "body-parser": "^1.17.2",
-    "dotenv": "^4.0.0",
     "express": "^4.15.3",
     "node-cache": "^4.1.1",
     "react": "^15.5.4",
@@ -16,10 +15,11 @@
     "twitter": "^1.7.0"
   },
   "devDependencies": {
+    "dotenv": "^4.0.0",
     "react-scripts": "1.0.7"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "concurrently \"react-scripts start\" \"python server.py\"",
     "build": "react-scripts build",
     "web": "node server.js",
     "test": "react-scripts test --env=jsdom",
