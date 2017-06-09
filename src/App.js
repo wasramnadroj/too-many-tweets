@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { FormGroup, FormControl, Button, Image, Col } from 'react-bootstrap';
 
-var Twitter = require("twitter");
-
 const monthNames = ["January", "February", "March", "April", "May", "June",
   "July", "August", "September", "October", "November", "December"
 ];

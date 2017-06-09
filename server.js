@@ -63,7 +63,7 @@ app.get('/api/:handle', (req, res) => {
   fetchUserTweets((tweet_info, max_id, report, initial) => {
     let options = {
       screen_name: req.params.handle,
-      count: 2000,
+      count: 200,
       include_rts: false
     };
 
@@ -75,7 +75,7 @@ app.get('/api/:handle', (req, res) => {
       var total_interaction, tweet;
       if (!error && tweets.length > 0) {
 
-        if ( tweet_info.user === undefined ) {
+        if (tweet_info.user === undefined) {
           tweet_info.user = tweets[0].user;
         }
 
